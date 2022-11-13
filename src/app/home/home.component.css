@@ -1,0 +1,31 @@
+.alignpro{
+    align-items: center;
+    display: block;
+    width: 100%;
+}
+
+.rounded-circle {
+    max-width: 150px;
+  }
+
+  .media {
+    display: block;
+  }
+  .media-body h1 {
+    font-weight: 300;
+    margin-bottom: 20px;
+  }
+  
+  .media-body h1 strong {
+    font-weight: 600;
+  }
+  
+  .media-body p {
+    margin-bottom: 10px;
+    font-weight: 300;
+  }
+  
+  .media-body p strong {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }

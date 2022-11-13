@@ -1,0 +1,28 @@
+.redirectToLogin {
+    padding: 6px 0 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    color: #7b91ff;
+  }
+  .redirectToLogin .redirect {
+    cursor: pointer;
+    color: #91a3ff96;
+    text-decoration: underline;
+  }
+  .redirectToLogin .redirect:hover {
+    color:#91a3ff;
+  }
+  .btn:hover {
+    color: #7b91ff;
+    background-color: #ffffffad;
+    border-color: #7b91ff;
+}
+.signuplabel {
+    padding: 0px 0 0;
+    font-size: 20px;
+    font-weight: 400;
+    display: block;
+    color: #7b91ff;
+  }

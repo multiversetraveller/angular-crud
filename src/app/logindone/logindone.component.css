@@ -1,0 +1,23 @@
+.sspace{
+    padding: 2%;
+    background: lavender;
+    border: #cbcbfd 1px solid;
+    border-radius: 8px;
+}
+.redirectToLogin {
+    padding: 15px 0 0;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 400;
+    display: block;
+    color: #7b91ff;
+  }
+  
+  .redirectToLogin .redirect {
+    cursor: pointer;
+    color: #91a3ff96;
+    text-decoration: underline;
+  }
+  .redirectToLogin .redirect:hover {
+    color:#91a3ff;
+  }

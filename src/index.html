@@ -5,7 +5,21 @@
   <title>AngularCrud</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" href="./assets/traveller.png">
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+  window.OneSignal = window.OneSignal || [];
+  OneSignal.push(function() {
+    OneSignal.init({
+      appId: "20dc6161-f26a-4bc1-b6f3-0ca52612b6d6",
+    });
+  });
+</script>
+<style>
+  body{
+    background-color: #ffffff !important;
+  }
+</style>
 </head>
 <body>
   <app-root></app-root>

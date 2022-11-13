@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-firebase-crud-7d8a8": {
+      "hosting": {
+        "angular-crud": [
+          "angular-firebase-crud-7d8a8"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-firebase-crud-7d8a8"
+  }
+}

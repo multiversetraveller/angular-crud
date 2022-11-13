@@ -1,0 +1,30 @@
+<div class="container  h-100" style="padding: 2%;">
+    <div class="row align-items-center cer h-100">
+        <div class="col-md-4  mx-auto justify-content-center ">
+            <form #login="ngForm" (ngSubmit)="signin(login.value)"  > 
+                <div class=" align-items-center" style="justify-content: center;display: flex;" >
+                    <img src="../../assets/Traveller_s-removebg-preview.png" style="height: 130px; width:130px" alt="logo">
+                </div>
+                <div class="mb-4">
+                    <label for="formGroupExampleInput" class="form-label text-center signuplabel">Sign-In</label>
+                </div>
+                <div class="mb-4 ">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email"  ngModel  >
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-4">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password" ngModel>
+                </div>
+        
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn" style="  --bs-btn-color: white;  --bs-btn-bg: #7b91ff;">Sign-In</button>
+                    </div>
+            </form>
+            <div class="mb-4 d-grid gap-2 redirectToLogin">
+                <span >{{loginlabel | firstword}}<span class="redirect" routerLink="/signup"> Sign up</span></span>
+            </div>
+        </div>
+    </div>
+</div>

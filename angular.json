@@ -19,13 +19,19 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "src/assets/traveller.png",
+              "src/assets",
+              "src/OneSignalSDKWorker.js"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/font/bootstrap-icons.css",
+              "node_modules/sweetalert2/src/sweetalert2.scss",
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -86,7 +92,7 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "assets": [
-              "src/favicon.ico",
+              "src/assets/traveller.png",
               "src/assets"
             ],
             "styles": [
@@ -94,8 +100,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "angular-crud:build:production",
+            "firebaseProject": "angular-firebase-crud-7d8a8",
+            "firebaseHostingSite": "angular-firebase-crud-7d8a8"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "3ea725fe-774c-427b-9a7e-808adb86d80e"
   }
 }
