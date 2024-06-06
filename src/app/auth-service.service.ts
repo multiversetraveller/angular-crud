@@ -3,16 +3,20 @@ import { AngularFireAuth ,} from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import {AngularFirestore, AngularFirestoreDocument,AngularFirestoreCollectionGroup} from '@angular/fire/compat/firestore';
 import { User } from './user';
+import { Observable } from 'rxjs';
+import { HttpClient} from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthServiceService {
   userData: any;
-
+  private apiUrl = 'https://allauction.in/score/admin_services/getAllSetting.php?series=vtspl1&tid=69';
   constructor(
     public authfb: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public afstore: AngularFirestore
+    public afstore: AngularFirestore,
+    private http: HttpClient
+    
   ) { 
 
     this.authfb.authState.subscribe((user) => {
@@ -82,5 +86,8 @@ export class AuthServiceService {
     });
   }
 
+  getSettings(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
  
 }

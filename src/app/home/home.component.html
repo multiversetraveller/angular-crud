@@ -61,13 +61,15 @@
         <div class="row justify-content-center">
           <div class="col-auto">
             <div class="input-group">
-              <button class="btn btn-primary" (click)="decrement()" [disabled]="number <= rangesData.baseValue">-</button>
+              <button class="btn btn-primary" (click)="decrement()" [disabled]="number <= baseValue || !rangesData.length">-</button>
               <input type="number" class="form-control text-center" [(ngModel)]="number" readonly>
-              <button class="btn btn-primary" (click)="increment()" [disabled]="number >= rangesData.data[rangesData.data.length - 1].max - getStep()">+</button>
+              <button class="btn btn-primary" (click)="increment()" [disabled]=" number >= rangesData[rangesData.length - 1].max - getStep()">+</button>
             </div>
           </div>
         </div>
       </div>
+      
+      
       
       
       

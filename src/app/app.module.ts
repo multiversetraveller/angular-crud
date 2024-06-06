@@ -21,6 +21,7 @@ import { AuthServiceService } from './auth-service.service';
 import { SigninComponent } from './signin/signin.component';
 import { HomeComponent } from './home/home.component';
 import { CustompipePipe } from './custompipe.pipe';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { CustompipePipe } from './custompipe.pipe';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     AppRoutingModule,
     AngularFireAuthModule,
     AngularFireStorageModule,
@@ -44,7 +46,7 @@ import { CustompipePipe } from './custompipe.pipe';
     NgbModule,
     
   ],
-  providers: [OneSignal,AuthServiceService,],
+  providers: [OneSignal,AuthServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

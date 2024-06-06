@@ -18,17 +18,9 @@ export class HomeComponent implements OnInit {
   getupdateimage$!: Observable<string | undefined>;
   downloadURL: any;
   number!: number;
-  rangesData = {
-    data: [
-      { min: 200000, max: 1000000, step: 50000 },
-      { min: 1000000, max: 2000000, step: 100000 },
-      { min: 2000000, max: 4000000, step: 200000 },
-      { min: 4000000, max: 8600000, step: 500000 },
-    ],
-    baseValue: 200000
-  };
-
-   constructor( 
+  rangesData: { min: number, max: number, step: number }[] = [];
+  baseValue: number = 200000; // Default base value set to 2 lakh
+     constructor( 
     public authservices:AuthServiceService,
     public afsmode:AngularFireStorage,    public afstore: AngularFirestore,private firestore:Firestore,
 
@@ -36,8 +28,10 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getSettings();
+
     this.getAllVipMembers();
-    this.number = this.rangesData.baseValue; // Initialize number to baseValue
+    this.number = this.baseValue; // Initialize number to baseValue
   }
 
   upload(event:any ) {
@@ -70,23 +64,23 @@ export class HomeComponent implements OnInit {
 
   
 
-  getStep() {
-    for (const range of this.rangesData.data) {
+   getStep() {
+    for (const range of this.rangesData) {
       if (this.number >= range.min && this.number < range.max) {
         return range.step;
       }
     }
-    return this.rangesData.data[0].step; // Default step
+    return this.rangesData[0].step; // Default step
   }
 
   increment() {
     const step = this.getStep();
-    const currentRange = this.rangesData.data.find(range => this.number >= range.min && this.number < range.max);
+    const currentRange = this.rangesData.find(range => this.number >= range.min && this.number < range.max);
 
     if (currentRange && (this.number + step) < currentRange.max) {
       this.number += step;
     } else {
-      const nextRange = this.rangesData.data.find(range => this.number < range.min);
+      const nextRange = this.rangesData.find(range => this.number < range.min);
       if (nextRange) {
         this.number = nextRange.min;
       }
@@ -95,15 +89,36 @@ export class HomeComponent implements OnInit {
 
   decrement() {
     const step = this.getStep();
-    const currentRange = this.rangesData.data.find(range => this.number >= range.min && this.number < range.max);
+    const currentRange = this.rangesData.find(range => this.number >= range.min && this.number < range.max);
 
     if (currentRange && (this.number - step) >= currentRange.min) {
       this.number -= step;
     } else {
-      const prevRange = this.rangesData.data.slice().reverse().find(range => this.number >= range.max);
+      const prevRange = this.rangesData.slice().reverse().find(range => this.number >= range.max);
       if (prevRange) {
         this.number = prevRange.max - prevRange.step;
       }
     }
+  }
+
+  getSettings() {
+    this.authservices.getSettings().subscribe(
+      (response) => {
+        if (response && response.data) {
+          const tickerAppData = response.data.find((item: { ptype: string; }) => item.ptype === 'All');
+          if (tickerAppData) {
+            // Filter out invalid ranges if needed
+            this.rangesData = tickerAppData.ticker_app.filter((item: { min: number; max: number; }) => item.min !== 0 && item.max !== 0);;
+            console.log(this.rangesData,'--------------dev------------------------')
+          }else{
+            console.log('--------------dev------------------------')
+
+          }
+        }
+      },
+      (error) => {
+        console.error('Error fetching settings:', error);
+      }
+    );
   }
 }
